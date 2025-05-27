@@ -1,0 +1,77 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.display {
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  font-size: 36px;
+  color: white;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+.dialpad {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 15px;
+  justify-content: center;
+}
+
+.dialpad button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 24px;
+  position: relative;
+}
+
+.dialpad button span {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.dialpad button small {
+  font-size: 12px;
+  color: #bbb;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.call-button {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.call-button button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  font-size: 32px;
+  color: white;
+}
+
+#call {
+  background-color: #2ecc71;
+}
+
+#clear {
+  background-color: #e74c3c;
+}

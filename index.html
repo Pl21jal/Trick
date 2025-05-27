@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Form Autofill</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 300px;
-    }
-
-    input {
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    input[type="submit"] {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPhone Dialpad</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <form autocomplete="on">
-    <input type="text" name="name" placeholder="Nama" required>
-    <input type="tel" name="phone" placeholder="No HP" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="submit" value="Kirim">
-  </form>
+  <div class="display" id="display">‎</div> <!-- pakai karakter kosong iOS supaya tetap tinggi -->
+
+  <div class="dialpad">
+    <button data-key="1"><span>1</span></button>
+    <button data-key="2"><span>2</span><small>ABC</small></button>
+    <button data-key="3"><span>3</span><small>DEF</small></button>
+    <button data-key="4"><span>4</span><small>GHI</small></button>
+    <button data-key="5"><span>5</span><small>JKL</small></button>
+    <button data-key="6"><span>6</span><small>MNO</small></button>
+    <button data-key="7"><span>7</span><small>PQRS</small></button>
+    <button data-key="8"><span>8</span><small>TUV</small></button>
+    <button data-key="9"><span>9</span><small>WXYZ</small></button>
+    <button data-key="*"><span>*</span></button>
+    <button data-key="0"><span>0</span><small>+</small></button>
+    <button data-key="#"><span>#</span></button>
+  </div>
+
+  <div class="call-button">
+    <button id="call">📞</button>
+    <button id="clear">⌫</button>
+  </div>
+
+  <script>
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll(".dialpad button");
+    const clearBtn = document.getElementById("clear");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-key");
+        display.textContent += key;
+      });
+    });
+
+    clearBtn.addEventListener("click", () => {
+      display.textContent = display.textContent.slice(0, -1);
+    });
+  </script>
 </body>
 </html>

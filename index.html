@@ -7,26 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="display" id="display">‎</div> <!-- pakai karakter kosong iOS supaya tetap tinggi -->
-
-  <div class="dialpad">
-    <button data-key="1"><span>1</span></button>
-    <button data-key="2"><span>2</span><small>ABC</small></button>
-    <button data-key="3"><span>3</span><small>DEF</small></button>
-    <button data-key="4"><span>4</span><small>GHI</small></button>
-    <button data-key="5"><span>5</span><small>JKL</small></button>
-    <button data-key="6"><span>6</span><small>MNO</small></button>
-    <button data-key="7"><span>7</span><small>PQRS</small></button>
-    <button data-key="8"><span>8</span><small>TUV</small></button>
-    <button data-key="9"><span>9</span><small>WXYZ</small></button>
-    <button data-key="*"><span>*</span></button>
-    <button data-key="0"><span>0</span><small>+</small></button>
-    <button data-key="#"><span>#</span></button>
+  <div class="status-bar">
+    <div class="time">03.07</div>
+    <div class="icons">•••</div>
   </div>
 
-  <div class="call-button">
-    <button id="call">📞</button>
-    <button id="clear">⌫</button>
+  <div class="display" id="display">&nbsp;</div>
+
+  <div class="dialpad">
+    <!-- Row 1 -->
+    <button data-key="1"><div class="number">1</div></button>
+    <button data-key="2"><div class="number">2</div><div class="letters">ABC</div></button>
+    <button data-key="3"><div class="number">3</div><div class="letters">DEF</div></button>
+    <!-- Row 2 -->
+    <button data-key="4"><div class="number">4</div><div class="letters">GHI</div></button>
+    <button data-key="5"><div class="number">5</div><div class="letters">JKL</div></button>
+    <button data-key="6"><div class="number">6</div><div class="letters">MNO</div></button>
+    <!-- Row 3 -->
+    <button data-key="7"><div class="number">7</div><div class="letters">PQRS</div></button>
+    <button data-key="8"><div class="number">8</div><div class="letters">TUV</div></button>
+    <button data-key="9"><div class="number">9</div><div class="letters">WXYZ</div></button>
+    <!-- Row 4 -->
+    <button data-key="*"><div class="number">*</div></button>
+    <button data-key="0"><div class="number">0</div><div class="letters">+</div></button>
+    <button data-key="#"><div class="number">#</div></button>
+  </div>
+
+  <div class="actions">
+    <button id="call" class="green">📞</button>
+    <button id="clear" class="red">⌫</button>
   </div>
 
   <script>
@@ -37,12 +46,14 @@
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         const key = btn.getAttribute("data-key");
+        if (display.textContent.trim() === '‎') display.textContent = '';
         display.textContent += key;
       });
     });
 
     clearBtn.addEventListener("click", () => {
       display.textContent = display.textContent.slice(0, -1);
+      if (display.textContent.trim() === '') display.innerHTML = '&nbsp;';
     });
   </script>
 </body>

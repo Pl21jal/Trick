@@ -24,6 +24,11 @@ overlayForm.addEventListener("submit", function (e) {
   const end = parseFloat(document.getElementById("endTime").value);
   const color = document.getElementById("colorPicker").value;
   const fontSize = document.getElementById("fontSize").value;
+  const font = document.getElementById("fontSelect").value;
+
+  const posTop = parseFloat(document.getElementById("posTop").value);
+  const posLeft = parseFloat(document.getElementById("posLeft").value);
+  const center = document.getElementById("centerText").checked;
 
   const id = "overlay-" + overlays.length;
 
@@ -31,14 +36,25 @@ overlayForm.addEventListener("submit", function (e) {
   div.classList.add("overlay-text");
   div.id = id;
   div.textContent = text;
+
+  // Apply styles
   div.style.color = color;
   div.style.fontSize = fontSize + "px";
+  div.style.fontFamily = font;
+  div.style.top = posTop + "%";
+
+  if (center) {
+    div.style.left = "50%";
+    div.style.transform = "translateX(-50%)";
+  } else {
+    div.style.left = posLeft + "%";
+    div.style.transform = "none";
+  }
 
   overlayContainer.appendChild(div);
 
   overlays.push({ id, start, end });
 
-  // Reset form
   overlayForm.reset();
 });
 

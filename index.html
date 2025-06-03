@@ -2,59 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iPhone Dialpad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Overlay Teks ke Video</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="status-bar">
-    <div class="time">03.07</div>
-    <div class="icons">•••</div>
+  <div class="container">
+    <video id="video" controls>
+      <source src="your-video.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div id="overlayContainer"></div>
+
+    <div class="form-area">
+      <h2>Set Overlay Teks</h2>
+      <div id="textInputs"></div>
+      <button onclick="applyOverlay()">Terapkan Teks</button>
+    </div>
   </div>
 
-  <div class="display" id="display">&nbsp;</div>
-
-  <div class="dialpad">
-    <!-- Row 1 -->
-    <button data-key="1"><div class="number">1</div></button>
-    <button data-key="2"><div class="number">2</div><div class="letters">ABC</div></button>
-    <button data-key="3"><div class="number">3</div><div class="letters">DEF</div></button>
-    <!-- Row 2 -->
-    <button data-key="4"><div class="number">4</div><div class="letters">GHI</div></button>
-    <button data-key="5"><div class="number">5</div><div class="letters">JKL</div></button>
-    <button data-key="6"><div class="number">6</div><div class="letters">MNO</div></button>
-    <!-- Row 3 -->
-    <button data-key="7"><div class="number">7</div><div class="letters">PQRS</div></button>
-    <button data-key="8"><div class="number">8</div><div class="letters">TUV</div></button>
-    <button data-key="9"><div class="number">9</div><div class="letters">WXYZ</div></button>
-    <!-- Row 4 -->
-    <button data-key="*"><div class="number">*</div></button>
-    <button data-key="0"><div class="number">0</div><div class="letters">+</div></button>
-    <button data-key="#"><div class="number">#</div></button>
-  </div>
-
-  <div class="actions">
-    <button id="call" class="green">📞</button>
-    <button id="clear" class="red">⌫</button>
-  </div>
-
-  <script>
-    const display = document.getElementById("display");
-    const buttons = document.querySelectorAll(".dialpad button");
-    const clearBtn = document.getElementById("clear");
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const key = btn.getAttribute("data-key");
-        if (display.textContent.trim() === '‎') display.textContent = '';
-        display.textContent += key;
-      });
-    });
-
-    clearBtn.addEventListener("click", () => {
-      display.textContent = display.textContent.slice(0, -1);
-      if (display.textContent.trim() === '') display.innerHTML = '&nbsp;';
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Overlay Teks ke Video</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
   <h1>Video Overlay Editor</h1>
@@ -32,9 +33,28 @@
     <label>Warna:</label>
     <input type="color" id="colorPicker" value="#ffffff" />
 
-    <label>Font Size:</label>
+    <label>Ukuran Font:</label>
     <input type="number" id="fontSize" value="24" /> px
 
+    <br><br>
+    <label>Posisi (custom):</label><br>
+    Top (%): <input type="number" id="posTop" value="20" min="0" max="100" />
+    Left (%): <input type="number" id="posLeft" value="0" min="0" max="100" />
+    <input type="checkbox" id="centerText"> Tengah horizontal
+    <br><br>
+
+    <label>Font:</label>
+    <select id="fontSelect">
+      <option value="Arial">Arial</option>
+      <option value="Courier New">Courier</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Impact">Impact</option>
+      <option value="Times New Roman">Times</option>
+      <option value="Verdana">Verdana</option>
+      <option value="'Patrick Hand', cursive" selected>Patrick Hand (Handwriting)</option>
+    </select>
+
+    <br><br>
     <button type="submit">Tambah Overlay</button>
   </form>
 
